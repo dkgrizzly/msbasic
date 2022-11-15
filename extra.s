@@ -12,6 +12,10 @@
 .include "kbd_extra.s"
 .endif
 
+.ifdef NES
+.include "nes_extra.s"
+.endif
+
 .ifdef APPLE
 .include "apple_extra.s"
 .endif

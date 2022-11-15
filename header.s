@@ -1,4 +1,8 @@
 		.segment "HEADER"
+.ifdef NES
+        jmp     COLD_START
+        jmp     RESTART
+.endif
 .ifdef KBD
         jmp     LE68C
         .byte   $00,$13,$56

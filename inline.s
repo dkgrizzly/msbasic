@@ -77,6 +77,7 @@ INLINAIM:
         cmp     #$7D
       .endif
         bcs     INLIN2
+      .ifndef NES
         cmp     #$40 ; @
       .ifdef AIM65
         beq     LB35F
@@ -88,6 +89,7 @@ INLINAIM:
         cmp     #$5F ; _
       .endif
         beq     L2420
+      .endif
       .endif
 L2443:
       .ifdef MICROTAN

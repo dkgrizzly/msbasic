@@ -41,8 +41,10 @@
 		keyword_rts "WAIT", WAIT
 .endif
 .ifndef KBD
+.ifndef NES
 		keyword_rts "LOAD", LOAD
 		keyword_rts "SAVE", SAVE
+.endif
 .endif
 .ifdef CONFIG_CBM_ALL
 		keyword_rts "VERIFY", VERIFY
@@ -113,10 +115,12 @@ UNFNC:
 		keyword_addr "VER", VER
 .endif
 .ifndef CONFIG_NO_POKE
-  .ifdef CONFIG_RAM
+  .ifndef NES
+    .ifdef CONFIG_RAM
 		keyword_addr "USR", IQERR
-  .else
+    .else
 		keyword_addr "USR", USR, TOKEN_USR
+    .endif
   .endif
 .endif
 		keyword_addr "FRE", FRE

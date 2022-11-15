@@ -83,7 +83,9 @@ COLD_START:
         sta     USR2
   .endif
   .if (!.def(CONFIG_RAM)) && (!.def(CONFIG_CBM_ALL))
+  .ifndef NES
         sta     USR
+  .endif
   .endif
   .endif
 
@@ -101,8 +103,10 @@ COLD_START:
           sta     GOSTROUT+1
           sty     GOSTROUT+2
     .else
+      .ifndef NES
           sta     USR+1
           sty     USR+2
+      .endif
       .ifdef SYM1
           sta     USR1+1
           sty     USR1+2
@@ -203,6 +207,7 @@ L4098:
   .endif
         ldx     #TEMPST
         stx     TEMPPT
+.ifndef NES
 .ifndef CONFIG_CBM_ALL
         lda     #<QT_MEMORY_SIZE
         ldy     #>QT_MEMORY_SIZE
@@ -223,6 +228,7 @@ L4098:
   .endif
         tay
         bne     L40EE
+.endif
 .endif
 .ifndef CBM2
         lda     #<RAMSTART2
@@ -298,6 +304,7 @@ L40FA:
         sty     FRETOP+1
 .endif
 L4106:
+.ifndef NES
 .ifndef CONFIG_CBM_ALL
   .ifdef APPLE
         lda     #$FF
@@ -339,6 +346,7 @@ L4129:
         clc
         adc     Z17
         sta     Z18
+.endif
 .endif
 L4136:
 .ifdef CONFIG_RAM
